@@ -32,7 +32,7 @@ Test Example
       # Arrange
       my_list = [1, 3, 4, 2, 2, 2, 4, 2]
       # Act
-      occurances = Utilities.count_occurances_in_list(my_list, 2)
+      occurances = count_occurances_in_list(my_list, 2)
       # Assert
       assert 4 == occurances
 
@@ -40,7 +40,7 @@ Test Example
       # Arrange
       my_list = ['a', 'c', 'd', 'b', 'b', 'b', 'c', 'b']
       # Act
-      occurances = Utilities.count_occurances_of_each_item_in_list(my_list)
+      occurances = count_occurances_of_each_item_in_list(my_list)
       # Assert
       expected = { 'a': 1, 'b': 4, 'c': 2, 'd': 1}
       assert expected == occurances
@@ -72,7 +72,7 @@ Test Example
     # Arrange
     init_list = [1, 2, 3, [1, 2, 3]]
     # Act
-    copy_list = Utilities.shallow_copy(init_list)
+    copy_list = shallow_copy(init_list)
     init_list[3].append(4)
     # Assert
     assert copy_list == [1, 2, 3, [1, 2, 3, 4]]
@@ -82,7 +82,7 @@ Test Example
     # Arrange
     init_list = [1, 2, 3, [1, 2, 3]]
     # Act
-    copy_list = Utilities.deep_copy(init_list)
+    copy_list = deep_copy(init_list)
     init_list[3].append(4)
     # Assert
     assert copy_list == [1, 2, 3, [1, 2, 3]]
@@ -114,7 +114,7 @@ Test Example
       # Arrange
       my_list = ['A','C','D','B','E']
       # Act
-      sorted_list = Utilities.sort_list_ascending(my_list)
+      sorted_list = sort_list_ascending(my_list)
       # Assert
       expected = ['A','B','C','D','E']
       assert sorted_list == expected
@@ -123,7 +123,7 @@ Test Example
       # Arrange
       my_list = ['A','C','D','B','E']
       # Act
-      sorted_list = Utilities.sort_list_descending(my_list)
+      sorted_list = sort_list_descending(my_list)
       # Assert
       expected = ['E','D','C','B','A']
       assert sorted_list == expected
@@ -151,7 +151,7 @@ Test Example
       # Arrange
       my_map = {'a':1,'b':2,'c':3}
       # Act
-      value = Utilities.get_key_from_map_else_return_default_ternary(my_map, 'a')
+      value = get_key_from_map_else_return_default_ternary(my_map, 'a')
       # Assert
       assert value == 1
 
@@ -159,7 +159,7 @@ Test Example
       # Arrange
       my_map = {'a':1,'b':2,'c':3}
       # Act
-      value = Utilities.get_key_from_map_else_return_default_ternary(my_map, 'z')
+      value = get_key_from_map_else_return_default_ternary(my_map, 'z')
       # Assert
       assert value == 'Not Found'
 
