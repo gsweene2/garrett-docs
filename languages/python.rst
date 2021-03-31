@@ -69,24 +69,24 @@ Test Example
   :linenos:
 
   def test_shallow_copy__modify_object_in_init_list__should_affect_copy_list():
-    # Arrange
-    init_list = [1, 2, 3, [1, 2, 3]]
-    # Act
-    copy_list = shallow_copy(init_list)
-    init_list[3].append(4)
-    # Assert
-    assert copy_list == [1, 2, 3, [1, 2, 3, 4]]
-    assert init_list == [1, 2, 3, [1, 2, 3, 4]]
+      # Arrange
+      init_list = [1, 2, 3, [1, 2, 3]]
+      # Act
+      copy_list = shallow_copy(init_list)
+      init_list[3].append(4)
+      # Assert
+      assert copy_list == [1, 2, 3, [1, 2, 3, 4]]
+      assert init_list == [1, 2, 3, [1, 2, 3, 4]]
 
   def test_deep_copy__modify_object_in_init_list__should_not_affect_copy_list():
-    # Arrange
-    init_list = [1, 2, 3, [1, 2, 3]]
-    # Act
-    copy_list = deep_copy(init_list)
-    init_list[3].append(4)
-    # Assert
-    assert copy_list == [1, 2, 3, [1, 2, 3]]
-    assert init_list == [1, 2, 3, [1, 2, 3, 4]]
+      # Arrange
+      init_list = [1, 2, 3, [1, 2, 3]]
+      # Act
+      copy_list = deep_copy(init_list)
+      init_list[3].append(4)
+      # Assert
+      assert copy_list == [1, 2, 3, [1, 2, 3]]
+      assert init_list == [1, 2, 3, [1, 2, 3, 4]]
 
 
 Sorting
@@ -164,4 +164,102 @@ Test Example
       assert value == 'Not Found'
 
 
+Lambda: Welcome Message
+-----------------------
 
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  print_welcome_lambda = lambda first, last: f"Welcome to garretts-docs, {first} {last}"
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_print_welcome_lambda():
+      # Arrage
+      first, last = "Garrett", "Smith"
+      # Act
+      result = print_welcome_lambda(first, last)
+      # Assert
+      expected = "Welcome to garretts-docs, Garrett Smith"
+      assert expected == result
+
+List Comprehension: Find Substrings in list of Strings
+------------------------------------------------------
+
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  """
+  List Comprehension: Find Substrings in list of Strings with 
+  """
+
+  def find_strings_that_contain_substring_in_list_comprehension(list_of_strings, substring):
+      return [word for word in list_of_strings if substring in word.lower()] 
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_find_strings_that_contain_substring_in_list_comprehension():
+      # Arrange
+      list_of_strings = ['Fred','Freedy','Reddison','Dave','Bob','Red']
+      # Act
+      result = find_strings_that_contain_substring_in_list_comprehension(list_of_strings,'red')
+      # Assert
+      expected = ['Fred','Reddison','Red']
+      assert expected == result
+ 
+Basic List Comprehension
+------------------------
+
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  def string_to_list_comprehension(my_string):
+      letter_list = [ letter for letter in my_string ]
+      return letter_list
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_string_to_list_comprehension():
+      # Arrange
+      my_string = 'awesome'
+      # Act
+      result_string = string_to_list_comprehension(my_string)
+      # Assert
+      expected = ['a','w','e','s','o','m','e']
+      assert expected == result_string
+
+Template Example
+----------------
+
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
