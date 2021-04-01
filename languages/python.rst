@@ -249,6 +249,44 @@ Test Example
       expected = ['a','w','e','s','o','m','e']
       assert expected == result_string
 
+Merge Dictionaries
+------------------
+
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  def merge_dictionaries(dict_1, dict_2):
+      return {**dict_1, **dict_2}
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_merge_dictionaries():
+      # Arrage
+      older_data = { "bob": 35, "phil": 39, "katie": 30 }
+      newer_data = { "phil": 41, "fred": 19 }
+      # Act
+      result = merge_dictionaries(older_data, newer_data)
+      # Assert
+      expected = { "bob": 35, "phil": 41, "katie": 30, "fred": 19 }
+      assert expected == result
+
+  def test_merge_dictionaries():
+      # Arrage
+      older_data = { "phil": 41, "fred": 19 }
+      newer_data = { "bob": 35, "phil": 39, "katie": 30 }
+      # Act
+      result = merge_dictionaries(older_data, newer_data)
+      # Assert
+      expected = { "phil": 39, "fred": 19, "bob": 35, "katie": 30 }
+      assert expected == result
+
 Template Example
 ----------------
 
