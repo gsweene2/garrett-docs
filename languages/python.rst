@@ -4,7 +4,34 @@ Python
 .. meta::
    :description lang=en: Python docs
 
+Basic List Comprehension
+------------------------
 
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  def string_to_list_comprehension(my_string):
+      letter_list = [ letter for letter in my_string ]
+      return letter_list
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_string_to_list_comprehension():
+      # Arrange
+      my_string = 'awesome'
+      # Act
+      result_string = string_to_list_comprehension(my_string)
+      # Assert
+      expected = ['a','w','e','s','o','m','e']
+      assert expected == result_string
+      
 Count Occurances in List
 ------------------------
 
@@ -44,6 +71,134 @@ Test Example
       # Assert
       expected = { 'a': 1, 'b': 4, 'c': 2, 'd': 1}
       assert expected == occurances
+
+Configure repo with pre-commit formatting
+-----------------------------------------
+
+Reference: https://black.readthedocs.io/en/stable/version_control_integration.html
+
+Create new file ``pre-commit-config.yaml``
+
+.. code-block:: yaml
+  :linenos:
+
+  repos:
+    - repo: https://github.com/psf/black
+      rev: 19.10b0 # Replace by any tag/version: https://github.com/psf/black/tags
+      hooks:
+        - id: black
+          language_version: python3 # Should be a command that runs python3.6+
+  
+Install pre-commit with ``pip install pre-commit``
+
+Run pre-commit with ``pre-commit install``
+
+Then commit the changes and add another commit. Should see the following:
+
+.. code-block:: console
+  :linenos:
+
+  [INFO] Initializing environment for https://github.com/psf/black.
+  [INFO] Installing environment for https://github.com/psf/black.
+  [INFO] Once installed this environment will be reused.
+  [INFO] This may take a few minutes...
+  black....................................................................Passed
+
+Lambda: Welcome Message
+-----------------------
+
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  print_welcome_lambda = lambda first, last: f"Welcome to garretts-docs, {first} {last}"
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_print_welcome_lambda():
+      # Arrage
+      first, last = "Garrett", "Smith"
+      # Act
+      result = print_welcome_lambda(first, last)
+      # Assert
+      expected = "Welcome to garretts-docs, Garrett Smith"
+      assert expected == result
+
+
+List Comprehension: Find Substrings in list of Strings
+------------------------------------------------------
+
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  """
+  List Comprehension: Find Substrings in list of Strings with 
+  """
+
+  def find_strings_that_contain_substring_in_list_comprehension(list_of_strings, substring):
+      return [word for word in list_of_strings if substring in word.lower()] 
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_find_strings_that_contain_substring_in_list_comprehension():
+      # Arrange
+      list_of_strings = ['Fred','Freedy','Reddison','Dave','Bob','Red']
+      # Act
+      result = find_strings_that_contain_substring_in_list_comprehension(list_of_strings,'red')
+      # Assert
+      expected = ['Fred','Reddison','Red']
+      assert expected == result
+
+Merge Dictionaries
+------------------
+
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  def merge_dictionaries(dict_1, dict_2):
+      return {**dict_1, **dict_2}
+
+Test Example
+************
+  
+.. code-block:: python
+  :linenos:
+
+  def test_merge_dictionaries():
+      # Arrage
+      older_data = { "bob": 35, "phil": 39, "katie": 30 }
+      newer_data = { "phil": 41, "fred": 19 }
+      # Act
+      result = merge_dictionaries(older_data, newer_data)
+      # Assert
+      expected = { "bob": 35, "phil": 41, "katie": 30, "fred": 19 }
+      assert expected == result
+
+  def test_merge_dictionaries():
+      # Arrage
+      older_data = { "phil": 41, "fred": 19 }
+      newer_data = { "bob": 35, "phil": 39, "katie": 30 }
+      # Act
+      result = merge_dictionaries(older_data, newer_data)
+      # Assert
+      expected = { "phil": 39, "fred": 19, "bob": 35, "katie": 30 }
+      assert expected == result
 
 Shallow vs Deep Copy
 --------------------
@@ -88,8 +243,34 @@ Test Example
       assert copy_list == [1, 2, 3, [1, 2, 3]]
       assert init_list == [1, 2, 3, [1, 2, 3, 4]]
 
+Sorting Dictionaries
+-------
 
-Sorting
+Code Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  def sort_dictionary_on_value(my_dict):
+      return sorted(my_dict.items(), key=lambda x: x[1], reverse=True)
+
+Test Example
+************
+
+.. code-block:: python
+  :linenos:
+
+  def test_sort_dictionary_on_value():
+      # Arragne
+      my_dict = {"bob": 97, "fred": 67, "katie": 78, "sophie": 99}
+      # Act
+      sorted_list = sort_dictionary_on_value(my_dict)
+      # Assert
+      expected_list = [("sophie", 99), ("bob", 97), ("katie", 78), ("fred", 67)]
+      assert expected_list == sorted_list
+
+Sorting Lists
 -------
 
 Code Example
@@ -128,7 +309,6 @@ Test Example
       expected = ['E','D','C','B','A']
       assert sorted_list == expected
 
-
 Ternary Statements
 ------------------
 
@@ -162,164 +342,6 @@ Test Example
       value = get_key_from_map_else_return_default_ternary(my_map, 'z')
       # Assert
       assert value == 'Not Found'
-
-
-Lambda: Welcome Message
------------------------
-
-Code Example
-************
-
-.. code-block:: python
-  :linenos:
-
-  print_welcome_lambda = lambda first, last: f"Welcome to garretts-docs, {first} {last}"
-
-Test Example
-************
-  
-.. code-block:: python
-  :linenos:
-
-  def test_print_welcome_lambda():
-      # Arrage
-      first, last = "Garrett", "Smith"
-      # Act
-      result = print_welcome_lambda(first, last)
-      # Assert
-      expected = "Welcome to garretts-docs, Garrett Smith"
-      assert expected == result
-
-List Comprehension: Find Substrings in list of Strings
-------------------------------------------------------
-
-Code Example
-************
-
-.. code-block:: python
-  :linenos:
-
-  """
-  List Comprehension: Find Substrings in list of Strings with 
-  """
-
-  def find_strings_that_contain_substring_in_list_comprehension(list_of_strings, substring):
-      return [word for word in list_of_strings if substring in word.lower()] 
-
-Test Example
-************
-  
-.. code-block:: python
-  :linenos:
-
-  def test_find_strings_that_contain_substring_in_list_comprehension():
-      # Arrange
-      list_of_strings = ['Fred','Freedy','Reddison','Dave','Bob','Red']
-      # Act
-      result = find_strings_that_contain_substring_in_list_comprehension(list_of_strings,'red')
-      # Assert
-      expected = ['Fred','Reddison','Red']
-      assert expected == result
- 
-Basic List Comprehension
-------------------------
-
-Code Example
-************
-
-.. code-block:: python
-  :linenos:
-
-  def string_to_list_comprehension(my_string):
-      letter_list = [ letter for letter in my_string ]
-      return letter_list
-
-Test Example
-************
-  
-.. code-block:: python
-  :linenos:
-
-  def test_string_to_list_comprehension():
-      # Arrange
-      my_string = 'awesome'
-      # Act
-      result_string = string_to_list_comprehension(my_string)
-      # Assert
-      expected = ['a','w','e','s','o','m','e']
-      assert expected == result_string
-
-Merge Dictionaries
-------------------
-
-Code Example
-************
-
-.. code-block:: python
-  :linenos:
-
-  def merge_dictionaries(dict_1, dict_2):
-      return {**dict_1, **dict_2}
-
-Test Example
-************
-  
-.. code-block:: python
-  :linenos:
-
-  def test_merge_dictionaries():
-      # Arrage
-      older_data = { "bob": 35, "phil": 39, "katie": 30 }
-      newer_data = { "phil": 41, "fred": 19 }
-      # Act
-      result = merge_dictionaries(older_data, newer_data)
-      # Assert
-      expected = { "bob": 35, "phil": 41, "katie": 30, "fred": 19 }
-      assert expected == result
-
-  def test_merge_dictionaries():
-      # Arrage
-      older_data = { "phil": 41, "fred": 19 }
-      newer_data = { "bob": 35, "phil": 39, "katie": 30 }
-      # Act
-      result = merge_dictionaries(older_data, newer_data)
-      # Assert
-      expected = { "phil": 39, "fred": 19, "bob": 35, "katie": 30 }
-      assert expected == result
-
-
-Configure repo with pre-commit formatting
------------------------------------------
-
-Reference: https://black.readthedocs.io/en/stable/version_control_integration.html
-
-Create new file ``pre-commit-config.yaml``
-
-.. code-block:: yaml
-  :linenos:
-
-  repos:
-    - repo: https://github.com/psf/black
-      rev: 19.10b0 # Replace by any tag/version: https://github.com/psf/black/tags
-      hooks:
-        - id: black
-          language_version: python3 # Should be a command that runs python3.6+
-  
-Install pre-commit with ``pip install pre-commit``
-
-Run pre-commit with ``pre-commit install``
-
-Then commit the changes and add another commit. Should see the following:
-
-.. code-block:: console
-  :linenos:
-
-  [INFO] Initializing environment for https://github.com/psf/black.
-  [INFO] Installing environment for https://github.com/psf/black.
-  [INFO] Once installed this environment will be reused.
-  [INFO] This may take a few minutes...
-  black....................................................................Passed
-
 
 Template Example
 ----------------
