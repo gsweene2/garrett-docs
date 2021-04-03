@@ -287,6 +287,40 @@ Test Example
       expected = { "phil": 39, "fred": 19, "bob": 35, "katie": 30 }
       assert expected == result
 
+
+Configure repo with pre-commit formatting
+-----------------------------------------
+
+Reference: https://black.readthedocs.io/en/stable/version_control_integration.html
+
+Create new file ``pre-commit-config.yaml``
+
+.. code-block:: yaml
+  :linenos:
+
+  repos:
+    - repo: https://github.com/psf/black
+      rev: 19.10b0 # Replace by any tag/version: https://github.com/psf/black/tags
+      hooks:
+        - id: black
+          language_version: python3 # Should be a command that runs python3.6+
+  
+Install pre-commit with ``pip install pre-commit``
+
+Run pre-commit with ``pre-commit install``
+
+Then commit the changes and add another commit. Should see the following:
+
+.. code-block:: console
+  :linenos:
+
+  [INFO] Initializing environment for https://github.com/psf/black.
+  [INFO] Installing environment for https://github.com/psf/black.
+  [INFO] Once installed this environment will be reused.
+  [INFO] This may take a few minutes...
+  black....................................................................Passed
+
+
 Template Example
 ----------------
 
