@@ -1,5 +1,5 @@
 garrett-docs: Notes and tips from Garrett
-========================================
+=========================================
 
 .. meta::
    :description lang=en: garrett-docs: Notes and tips from Garrett
@@ -18,3 +18,17 @@ Languages
 
    /languages/python
    /languages/java
+
+
+Configurations
+--------------
+
+* **Configurations**:
+  :doc:`Node </configurations/node>`
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Configurations
+
+   /configurations/node

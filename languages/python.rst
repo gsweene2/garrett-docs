@@ -13,7 +13,36 @@ Import statements for all examples
   :linenos:
 
   import copy
-  from collections import Counter
+  from collections import Counter, namedtuple
+  
+  
+
+Argument Unpacking
+------------------
+Example
+*******
+.. code-block:: python
+  :linenos:
+  
+  
+  def unpack_dict_arguments(arg1, arg2, arg3):
+      return {
+          'arg1': arg1,
+          'arg2': arg2,
+          'arg3': arg3
+      }
+  
+  
+  def test_unpack_dict_arguments():
+      # Any order!
+      arg_dict = {'arg2': 'Argument 2', 'arg1': 'Argument 1', 'arg3': 'Argument 3'}
+      result = unpack_dict_arguments(**arg_dict)
+      expected = {
+          'arg1': 'Argument 1',
+          'arg2': 'Argument 2',
+          'arg3': 'Argument 3'
+      }
+      assert expected == result
   
   
 
@@ -45,6 +74,80 @@ Test Basic Comprehension
       # Assert
       expected = ["a", "w", "e", "s", "o", "m", "e"]
       assert expected == result_string
+  
+  
+
+Caesar Cipher single Character (Unicode)
+----------------------------------------
+Example
+*******
+.. code-block:: python
+  :linenos:
+  
+  def caesar_cipher_single_character(character, number):
+      # Get unicode decimal
+      uni = ord(character)
+      # Add number to create new unicode decimal
+      new_uni = uni + number
+      # Since A-z are 96-122, check to see if still in range
+      if new_uni <= 122:
+          return chr(new_uni)
+      return chr((new_uni + 96) % 122)
+  
+
+Test Caesar Cipher single Character
+***********************************
+.. code-block:: python
+  :linenos:
+  
+  
+  def test_caesar_cipher_single_character():
+      # Arrange
+      character, number = 'a', 1
+      # Act
+      result = caesar_cipher_single_character(character, number)
+      # Assert
+      assert 'b' == result
+  
+  def test_caesar_cipher_single_character():
+      # Arrange
+      character, number = 'z', 1
+      # Act
+      result = caesar_cipher_single_character(character, number)
+      # Assert
+      assert 'a' == result
+  
+  
+
+Collections: namedtuples
+------------------------
+Example
+*******
+.. code-block:: python
+  :linenos:
+  
+  
+  def create_golf_hole_named_tuple(hole_number, par):
+      Hole = namedtuple("hole", "number par")
+      return Hole(hole_number, par)
+  
+  
+
+Test Collections: namedtuples
+*****************************
+.. code-block:: python
+  :linenos:
+  
+  
+  def test_create_golf_hole_named_tuple():
+      # Arrange
+      hole_number = 18
+      par = 4
+      # Act
+      hole_tuple = create_golf_hole_named_tuple(hole_number, par)
+      # Assert
+      assert 18 == hole_tuple.number
+      assert 4 == hole_tuple.par
   
   
 
