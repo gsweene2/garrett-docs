@@ -26,22 +26,14 @@ Example
   
   
   def unpack_dict_arguments(arg1, arg2, arg3):
-      return {
-          'arg1': arg1,
-          'arg2': arg2,
-          'arg3': arg3
-      }
+      return {"arg1": arg1, "arg2": arg2, "arg3": arg3}
   
   
   def test_unpack_dict_arguments():
       # Any order!
-      arg_dict = {'arg2': 'Argument 2', 'arg1': 'Argument 1', 'arg3': 'Argument 3'}
+      arg_dict = {"arg2": "Argument 2", "arg1": "Argument 1", "arg3": "Argument 3"}
       result = unpack_dict_arguments(**arg_dict)
-      expected = {
-          'arg1': 'Argument 1',
-          'arg2': 'Argument 2',
-          'arg3': 'Argument 3'
-      }
+      expected = {"arg1": "Argument 1", "arg2": "Argument 2", "arg3": "Argument 3"}
       assert expected == result
   
   
@@ -84,6 +76,7 @@ Example
 .. code-block:: python
   :linenos:
   
+  
   def caesar_cipher_single_character(character, number):
       # Get unicode decimal
       uni = ord(character)
@@ -94,6 +87,7 @@ Example
           return chr(new_uni)
       return chr((new_uni + 96) % 122)
   
+  
 
 Test Caesar Cipher single Character
 ***********************************
@@ -103,19 +97,20 @@ Test Caesar Cipher single Character
   
   def test_caesar_cipher_single_character():
       # Arrange
-      character, number = 'a', 1
+      character, number = "a", 1
       # Act
       result = caesar_cipher_single_character(character, number)
       # Assert
-      assert 'b' == result
+      assert "b" == result
+  
   
   def test_caesar_cipher_single_character():
       # Arrange
-      character, number = 'z', 1
+      character, number = "z", 1
       # Act
       result = caesar_cipher_single_character(character, number)
       # Assert
-      assert 'a' == result
+      assert "a" == result
   
   
 
@@ -496,3 +491,39 @@ Test Sum
       result = sum_list(data)
       # Assert
       assert result, 6
+  
+  
+
+Switch
+------
+Example
+*******
+.. code-block:: python
+  :linenos:
+  
+  
+  def switch_on_ones(num):
+      switcher = {
+          1: "One",
+          2: "Two",
+          3: "Three",
+          4: "Four",
+          5: "Five",
+          6: "Six",
+          7: "Seven",
+          8: "Eight",
+          9: "Nine",
+      }
+      return switcher.get(num)
+  
+  
+
+Test Switch
+***********
+.. code-block:: python
+  :linenos:
+  
+  
+  def test_switch_on_ones():
+      assert "Five" == switch_on_ones(5)
+      assert "Nine" == switch_on_ones(9)
