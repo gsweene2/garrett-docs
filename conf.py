@@ -20,7 +20,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'garrett-docs'
-copyright = '2021, Garrett Sweeney'
+copyright = '2022, Garrett Sweeney'
 author = 'Garrett Sweeney'
 
 

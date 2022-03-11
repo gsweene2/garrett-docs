@@ -9,6 +9,7 @@ Languages
 
 * **Languages**:
   :doc:`Python </languages/python>` &
+  :doc:`Go </languages/go>` &
   :doc:`Java </languages/java>`
 
 .. toctree::
@@ -17,6 +18,7 @@ Languages
    :caption: Languages
 
    /languages/python
+   /languages/go
    /languages/java
 
 
